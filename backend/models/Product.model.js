@@ -1,6 +1,4 @@
 import mongoose from "mongoose";
-import BestSeller from './../../frontend/src/components/BestSeller';
-
 const productSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -31,7 +29,7 @@ const productSchema = new mongoose.Schema({
         type:Array,
         required:true,
     },
-    BestSeller:{
+    Bestseller:{
         type:Boolean,
         
     },
