@@ -10,11 +10,12 @@ const currency = '$';
 const delivery_fee = 10;
 
 const backendUrl = import.meta.env.VITE_BACKEND_URL;
-//console.log(backendUrl);
+console.log(backendUrl);
 const [search,setSearch] = useState('');
 const [showSearch,setShowSearch] = useState(false);
 const [cartItems,setCartItems] = useState({});
 const [products,setProducts] = useState([]);
+const [token,setToken] = useState('');
 const navigate = useNavigate();
 
 const addToCart = async (itemId,size)=>{
@@ -55,7 +56,7 @@ const addToCart = async (itemId,size)=>{
    const getProductsData = async()=>{
     try {
         const response = await axios.get(backendUrl + "/api/product/list")
-        console.log(response.data);
+      //  console.log(response.data);
         if(response.data.success){
             setProducts(response.data.products);
         }else{
@@ -69,6 +70,12 @@ const addToCart = async (itemId,size)=>{
    }  
    useEffect(()=>{
     getProductsData();
+   },[])
+
+   useEffect(()=>{
+      if(!token && localStorage.getItem('token')){
+        setToken(localStorage.getItem('token'))
+      }
    },[])
 
    const updateQuantity = async (itemId,size,quantity)=>{
@@ -101,7 +108,7 @@ const addToCart = async (itemId,size)=>{
       getCartCount,
       updateQuantity,
       getCartAmount,
-      navigate,backendUrl
+      navigate,backendUrl,token,setToken
     }
     return (
         <ShopContext.Provider value = {value}>
