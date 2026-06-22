@@ -4,6 +4,7 @@ A full-stack e-commerce web application built using modern technologies. This pl
 
 ## 🌐 Live Demo
 Frontend: https://e-commerce-lb64.vercel.app
+Admin Panel: https://foreveradmin-six.vercel.app
 
 ---
 
